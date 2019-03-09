@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%String welcomeParagraph = String.valueOf(session.getAttribute("username")); %>
 <html>
     <head>
         <title>Tob Log</title>
@@ -19,6 +20,7 @@
     <hr>
     <marquee id="announcements">Welcome to the blog!</marquee>
     <hr>
+    <p><%if (!welcomeParagraph.equals("null")) {out.print("Welcome " + welcomeParagraph + "!");}%></p>
     <table>
         <td>
             <tr><a href="login.html">Login</a></tr>
