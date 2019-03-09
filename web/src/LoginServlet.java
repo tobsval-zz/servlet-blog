@@ -9,14 +9,16 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginServlet extends HttpServlet {
 
+    private DatabaseService dbService = new DatabaseService();
+    private SessionService sessionService = new SessionService();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try (PrintWriter serverOut = response.getWriter()) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
             if(!(username == null || "".equals(username) || password == null || "".equals(password))){
-                DatabaseService dbService = new DatabaseService();
-                SessionService sessionService = new SessionService();
+
 
                 String salt = dbService.retrieveEntry("SALT", "USERNAME", username);
                 String hashedPass = CryptoService.generateDigest(salt, password);
