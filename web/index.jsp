@@ -21,7 +21,7 @@
     <marquee id="announcements">Welcome to the blog!</marquee>
     <hr>
     <p><%if (!welcomeParagraph.equals("null")) {out.print("Welcome " + welcomeParagraph + "!");}%></p>
-    <table>
+    <table> <!-- TODO Make this table conditional based on login condition -->
         <td>
             <tr><a href="login.html">Login</a></tr>
         </td>
