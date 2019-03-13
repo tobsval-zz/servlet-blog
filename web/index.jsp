@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%String welcomeParagraph = String.valueOf(session.getAttribute("username")); %>
+<%String username = String.valueOf(session.getAttribute("username")); %>
 <html>
     <head>
         <title>Tob Log</title>
@@ -20,15 +20,23 @@
     <hr>
     <marquee id="announcements">Welcome to the blog!</marquee>
     <hr>
-    <p><%if (!welcomeParagraph.equals("null")) {out.print("Welcome " + welcomeParagraph + "!");}%></p>
-    <table> <!-- TODO Make this table conditional based on login condition -->
-        <td>
-            <tr><a href="login.html">Login</a></tr>
-        </td>
-        <td>
-            <tr><a href="register.html">Register</a></tr>
-        </td>
-    </table>
+    <p><%if (!username.equals("null")) {out.print("Welcome " + username + "!");}%></p>
+    <%if (username.equals("null")) { //User is not logged in:
+        out.print("<table>\n" +
+            "           <td>\n" +
+            "               <tr><a href=\"login.html\">Login</a></tr>\n" +
+            "           </td>\n" +
+            "           <td>\n" +
+            "               <tr><a href=\"register.html\">Register</a></tr>\n" +
+            "           </td>\n" +
+            "      </table>");
+    } else { //User is logged in:
+        out.print("<form method=\"post\" action=\"LogoutServlet\">\n" +
+                  "    <button value=\"logout\" type=\"submit\">Logout</button>\n" +
+                  "</form>");
+    }%>
+    <hr>
+    <!-- TODO Add Posts Below -->
     </body>
     <link rel="stylesheet" href="css/index.css">
 </html>
