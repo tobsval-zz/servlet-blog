@@ -33,17 +33,4 @@ class DatabaseService {
         return foundEntry;
     }
 
-
-    ResultSet forwardCustomQuery(PreparedStatement preparedStatement) throws SQLException {
-        try(Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/blog-db")) {
-
-            ResultSet prepStmtResultSet = preparedStatement.getResultSet();
-            preparedStatement.close();
-            prepStmtResultSet.close();
-
-            return prepStmtResultSet;
-
-        }
-    }
-
 }
