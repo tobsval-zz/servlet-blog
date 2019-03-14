@@ -21,8 +21,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
-    <orderEntry type="library" name="org.apache.derby:derby:10.14.1.0" level="application" />
-    <orderEntry type="library" name="org.apache.derby:derbyclient:10.14.2.0" level="application" />
     <orderEntry type="library" name="derby-10.14.1.0" level="project" />
     <orderEntry type="library" name="derbyclient-10.14.2.01" level="project" />
   </component>

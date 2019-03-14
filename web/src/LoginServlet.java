@@ -1,3 +1,6 @@
+import services.CryptoService;
+import services.DatabaseService;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +22,8 @@ public class LoginServlet extends HttpServlet {
 
             if(!(username == null || "".equals(username) || password == null || "".equals(password))){
 
-                String salt = dbService.retrieveEntry("SALT", "USERNAME", username);
+                String salt = dbService.retrieveEntry("SALT", "USERS",
+                                                  "USERNAME", username);
                 String hashedPass = CryptoService.generateDigest(salt, password);
 
                 if(CryptoService.isExpectedPass(salt, password, hashedPass)){

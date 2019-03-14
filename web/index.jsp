@@ -27,7 +27,7 @@
             "               <tr><a href=\"login.html\">Login</a></tr>\n" +
             "           </td>\n" +
             "           <td>\n" +
-            "               <tr><a href=\"register.html\">Register</a></tr>\n" +
+            "               <tr><a href=\"register.jsp\">Register</a></tr>\n" +
             "           </td>\n" +
             "      </table>");
     } else { //User is logged in:

@@ -1,12 +1,14 @@
+package services;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 
-class CryptoService {
+public class CryptoService {
 
-    static String generateDigest(String salt, String password) throws NoSuchAlgorithmException {
+    public static String generateDigest(String salt, String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-1");
 
         String plaintext = password + salt;
@@ -16,7 +18,7 @@ class CryptoService {
     }
 
 
-    static String generateSalt() throws NoSuchAlgorithmException {
+    public static String generateSalt() throws NoSuchAlgorithmException {
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
 
         byte[] saltBytes = new byte[20];
@@ -26,7 +28,7 @@ class CryptoService {
     }
 
 
-    static boolean isExpectedPass(String salt, String password, String hashedPassword) throws NoSuchAlgorithmException {
+    public static boolean isExpectedPass(String salt, String password, String hashedPassword) throws NoSuchAlgorithmException {
         return generateDigest(salt, password).equals(hashedPassword);
     }
 
